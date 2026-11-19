@@ -11,6 +11,7 @@ public partial class UcManutencaoNova : UserControl, ITela
     public UcManutencaoNova(uint? equipamentoId) {
         InitializeComponent();
         btnAcao.Click += (_, _) => Navegar?.Invoke("manutencoes");
+        btnSalvar.Enabled = false;
         campo0.Items.Clear();
         campo2.Items.Clear();
         campo2.DropDownStyle = ComboBoxStyle.DropDown;
@@ -23,6 +24,9 @@ public partial class UcManutencaoNova : UserControl, ITela
             campo0.DisplayMember = "nome";
             campo0.ValueMember = "id";
             campo0.DataSource = equipamentos;
+            btnSalvar.Enabled = equipamentos.Rows.Count > 0;
+            if (equipamentos.Rows.Count == 0)
+                Avisar("Nenhum equipamento disponível para uma nova manutenção. Cadastre um equipamento ou conclua uma manutenção aberta.");
             if (equipamentoId is uint id) campo0.SelectedValue = id;
         });
         btnSalvar.Click += async (_, _) =>

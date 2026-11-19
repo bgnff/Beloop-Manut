@@ -40,6 +40,7 @@ partial class FrmPrincipal
         pnlConteudo.Dock = DockStyle.Fill; pnlConteudo.BackColor = Color.FromArgb(241,243,247);
         Controls.Add(pnlConteudo); Controls.Add(pnlCabecalho); Controls.Add(pnlMenu);
         AutoScaleMode = AutoScaleMode.Font; ClientSize = new Size(1440,900); MinimumSize = new Size(1050,700); StartPosition = FormStartPosition.CenterScreen; Text = "Beloop Manut";
+        WindowState = FormWindowState.Maximized;
         ResumeLayout(false);
     }
 }

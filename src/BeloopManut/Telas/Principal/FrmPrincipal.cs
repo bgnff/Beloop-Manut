@@ -64,5 +64,6 @@ public partial class FrmPrincipal : Form
         pnlConteudo.Controls.Clear();
         tela.Dock = DockStyle.Fill;
         pnlConteudo.Controls.Add(tela);
+        tela.BringToFront();
     }
 }

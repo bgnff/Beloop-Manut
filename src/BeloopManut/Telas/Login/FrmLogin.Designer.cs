@@ -316,6 +316,7 @@ partial class FrmLogin
         bordaUsuario.PerformLayout();
         bordaSenha.ResumeLayout(false);
         bordaSenha.PerformLayout();
+        WindowState = FormWindowState.Maximized;
         ResumeLayout(false);
     }
 }

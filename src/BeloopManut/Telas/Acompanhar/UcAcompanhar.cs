@@ -21,7 +21,9 @@ public partial class UcAcompanhar : UserControl, ITela
         {
             int alteradas = await Oficina.Gravar("UPDATE manutencoes SET servico_realizado = @servico, situacao = 'Em andamento' WHERE id = @id AND situacao <> 'Concluída'",
                 ("@servico", txtServico.Text.Trim()), ("@id", id));
-            if (!IsDisposed) Avisar(alteradas > 0 ? "Atendimento atualizado." : "A manutenção já foi concluída.");
+            if (IsDisposed) return;
+            Avisar(alteradas > 0 ? "Atendimento atualizado." : "A manutenção já foi concluída.");
+            Navegar?.Invoke("acompanhar:" + id);
         });
         if (id == 0) return;
         Load += async (_, _) => await Executar(this, async () =>

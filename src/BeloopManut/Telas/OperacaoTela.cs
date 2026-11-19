@@ -15,7 +15,18 @@ internal static class OperacaoTela
         {
             if (!tela.IsDisposed) Avisar("Já existe uma manutenção aberta para este equipamento ou um código igual.");
         }
-        catch (Exception ex) when (ex is MySqlException or IOException or InvalidOperationException or System.Text.Json.JsonException or ArgumentException or KeyNotFoundException)
+        catch (MySqlException ex)
+        {
+            string mensagem = ex.Number switch
+            {
+                1042 or 2003 => "Não foi possível alcançar o MySQL. Confira se o servidor está iniciado e a porta está correta.",
+                1044 or 1045 => "A conta do MySQL não tem acesso. Confira as credenciais e permissões.",
+                1049 or 1054 or 1146 => "O esquema do banco está incompleto ou incompatível. Confira o script 04_schema_completo.sql.",
+                _ => $"O MySQL não concluiu a operação (código {ex.Number})."
+            };
+            if (!tela.IsDisposed) Avisar(mensagem);
+        }
+        catch (Exception ex) when (ex is IOException or InvalidOperationException or System.Text.Json.JsonException or ArgumentException or KeyNotFoundException)
         {
             if (!tela.IsDisposed) Avisar("Não foi possível concluir a operação. Confira a conexão e o esquema do banco.");
         }
@@ -34,11 +45,12 @@ internal static class OperacaoTela
         grade.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
         grade.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
         grade.RowTemplate.Height = 36;
+        grade.AutoGenerateColumns = true;
         grade.DataSource = dados;
         grade.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         grade.MultiSelect = false;
         foreach (string nome in ocultas)
-            grade.Columns[nome]!.Visible = false;
+            if (grade.Columns[nome] is { } colunaOculta) colunaOculta.Visible = false;
         foreach (DataGridViewColumn coluna in grade.Columns)
             if (coluna.ValueType == typeof(DateTime)) coluna.DefaultCellStyle.Format = "dd/MM/yyyy";
     }
