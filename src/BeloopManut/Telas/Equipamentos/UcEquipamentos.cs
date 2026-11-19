@@ -11,7 +11,13 @@ public partial class UcEquipamentos : UserControl, ITela
     {
         InitializeComponent();
         btnAcao.Click += (_, _) => Navegar?.Invoke("equipamento_novo");
-        btnDetalhes.Click += (_, _) => MessageBox.Show("A consulta de detalhes ainda está em implementação.", "Beloop Manut");
+        btnDetalhes.Click += (_, _) =>
+        {
+            if (OperacaoTela.Selecionado(tabela) is string id) Navegar?.Invoke("equipamento_detalhes:" + id);
+            else OperacaoTela.Avisar("Selecione um equipamento.");
+        };
+        tabela.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        tabela.MultiSelect = false;
         // Aguarda o usuário terminar de digitar antes de consultar novamente.
         _esperaPesquisa.Tick += async (_, _) => { _esperaPesquisa.Stop(); await CarregarAsync(); };
         txtPesquisa.TextChanged += (_, _) => { _esperaPesquisa.Stop(); _esperaPesquisa.Start(); };
