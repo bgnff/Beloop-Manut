@@ -33,12 +33,12 @@ public partial class FrmPrincipal : Form
         {
             "equipamentos" => new Equipamentos.UcEquipamentos(),
             "equipamento_novo" => new EquipamentoNovo.UcEquipamentoNovo(),
-            "equipamento_detalhes" => new EquipamentoDetalhes.UcEquipamentoDetalhes(),
+            "equipamento_detalhes" => new EquipamentoDetalhes.UcEquipamentoDetalhes(id),
             "manutencoes" => new Manutencoes.UcManutencoes(),
             "manutencao_nova" => new ManutencaoNova.UcManutencaoNova(id == 0 ? null : id),
             "acompanhar" => new Acompanhar.UcAcompanhar(id),
             "concluir" => new Concluir.UcConcluir(id),
-            "historico" => new Historico.UcHistorico(),
+            "historico" => new Historico.UcHistorico(id),
             "relatorios" => new Relatorios.UcRelatorios(),
             _ => new VisaoGeral.UcVisaoGeral()
         };
