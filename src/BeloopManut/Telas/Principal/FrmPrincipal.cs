@@ -10,15 +10,25 @@ public partial class FrmPrincipal : Form
         lblUsuario.Text = nomeUsuario + "\nEquipe técnica";
         imgMarca.Image = Recursos.Imagens.Carregar("LogoBeloopManut.png");
         // Ícones fornecidos junto ao protótipo, mantidos como recursos incorporados.
-        btnVisao.Image = Recursos.Imagens.Carregar("Iconify.Lucide.dashboard.normal.png");
-        btnEquipamentos.Image = Recursos.Imagens.Carregar("Iconify.Lucide.monitor.normal.png");
-        btnManutencoes.Image = Recursos.Imagens.Carregar("Iconify.Lucide.wrench.normal.png");
-        btnRelatorios.Image = Recursos.Imagens.Carregar("Menu.Relatórios.normal.png");
-        btnHistorico.Image = Recursos.Imagens.Carregar("Iconify.Lucide.history.normal.png");
+        btnVisao.Image = CarregarIcone("Iconify.Lucide.dashboard.normal.png");
+        btnEquipamentos.Image = CarregarIcone("Iconify.Lucide.monitor.normal.png");
+        btnManutencoes.Image = CarregarIcone("Iconify.Lucide.wrench.normal.png");
+        btnRelatorios.Image = CarregarIcone("Menu.Relatórios.normal.png");
+        btnHistorico.Image = CarregarIcone("Iconify.Lucide.history.normal.png");
         foreach (var botao in new[] { btnVisao, btnEquipamentos, btnManutencoes, btnHistorico, btnRelatorios })
         {
+            botao.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            botao.Cursor = Cursors.Hand;
+            botao.FlatAppearance.MouseOverBackColor = Color.FromArgb(56, 77, 103);
             botao.ImageAlign = ContentAlignment.MiddleLeft;
             botao.TextImageRelation = TextImageRelation.ImageBeforeText;
+            var icone = botao.Image;
+            var fonte = botao.Font;
+            botao.Disposed += (_, _) =>
+            {
+                icone?.Dispose();
+                fonte.Dispose();
+            };
         }
         btnVisao.Click += (_, _) => AbrirTela("visao_geral");
         btnEquipamentos.Click += (_, _) => AbrirTela("equipamentos");
@@ -26,6 +36,17 @@ public partial class FrmPrincipal : Form
         btnHistorico.Click += (_, _) => AbrirTela("historico");
         btnRelatorios.Click += (_, _) => AbrirTela("relatorios");
         AbrirTela("visao_geral");
+    }
+
+    private static Bitmap CarregarIcone(string recurso)
+    {
+        using var original = Recursos.Imagens.Carregar(recurso);
+        // A borda transparente mantém um respiro entre o símbolo e o texto.
+        var icone = new Bitmap(36, 28);
+        using var desenho = Graphics.FromImage(icone);
+        desenho.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+        desenho.DrawImage(original, new Rectangle(0, 0, 28, 28));
+        return icone;
     }
 
     private void AbrirTela(string destino)
@@ -56,7 +77,7 @@ public partial class FrmPrincipal : Form
         foreach (var botao in new[] { btnVisao, btnEquipamentos, btnManutencoes, btnHistorico, btnRelatorios })
         {
             botao.BackColor = botao == ativo ? Color.FromArgb(44, 63, 86) : pnlMenu.BackColor;
-            botao.ForeColor = botao == ativo ? Color.White : Color.FromArgb(194, 205, 220);
+            botao.ForeColor = botao == ativo ? Color.White : Color.FromArgb(225, 233, 244);
         }
         ((ITela)tela).Navegar += AbrirTela;
         // Descartar a tela anterior libera os controles e recursos associados.
