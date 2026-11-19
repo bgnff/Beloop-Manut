@@ -18,6 +18,12 @@ Quando as intervenções são registradas em anotações separadas, torna-se mai
 - Consultar o histórico de intervenções de cada equipamento.
 - Visualizar informações gerais e relatórios.
 
+## Tecnologias
+
+- **C#:** linguagem de programação.
+- **Windows Forms:** interface desktop para Windows.
+- **MySQL:** armazenamento e gerenciamento dos dados.
+
 ## Escopo da primeira versão
 
 A aplicação será utilizada em **Windows** e deverá manter os dados disponíveis para consultas posteriores. A situação de cada equipamento deve permanecer coerente com o andamento de sua manutenção.
@@ -30,7 +36,7 @@ A equipe da oficina interna de manutenção responsável pelo acompanhamento dos
 
 ## Situação do projeto
 
-Projeto em desenvolvimento como parte do Projeto Integrador 2. As funcionalidades e tecnologias poderão ser detalhadas conforme o avanço da equipe.
+Projeto em desenvolvimento como parte do Projeto Integrador 2. As funcionalidades poderão ser detalhadas conforme o avanço da equipe.
 
 ---
 
