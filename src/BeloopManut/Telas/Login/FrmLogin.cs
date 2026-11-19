@@ -5,6 +5,10 @@ public partial class FrmLogin : Form
     public FrmLogin()
     {
         InitializeComponent();
+        lblAjuda.Cursor = Cursors.Hand;
+        lblAjuda.Click += (_, _) => MessageBox.Show(
+            "Se você esqueceu a senha ou sua conta está desativada, fale com o administrador da oficina.",
+            "Ajuda para acessar");
         imagemEquipe.Image = Recursos.Imagens.Carregar("EquipeBeloopLetreiro.png");
         imagemSimbolo.Image = Recursos.Imagens.Carregar("LogoBeloop.png");
         imagemMarca.Image = Recursos.Imagens.Carregar("BeloopManutLetreiro.png");

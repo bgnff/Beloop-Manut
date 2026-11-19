@@ -24,6 +24,16 @@ internal static class OperacaoTela
 
     internal static void Mostrar(DataGridView grade, DataTable dados, params string[] ocultas)
     {
+        grade.EnableHeadersVisualStyles = false;
+        grade.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(244, 247, 250);
+        grade.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(85, 104, 128);
+        grade.DefaultCellStyle.ForeColor = Color.FromArgb(32, 47, 68);
+        grade.DefaultCellStyle.SelectionBackColor = Color.FromArgb(226, 235, 255);
+        grade.DefaultCellStyle.SelectionForeColor = grade.DefaultCellStyle.ForeColor;
+        grade.GridColor = Color.FromArgb(230, 236, 243);
+        grade.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+        grade.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+        grade.RowTemplate.Height = 36;
         grade.DataSource = dados;
         grade.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         grade.MultiSelect = false;

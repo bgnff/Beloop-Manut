@@ -34,8 +34,7 @@ public partial class UcEquipamentos : UserControl, ITela
             string situacao = cmbSituacao.SelectedIndex <= 0 ? "" : cmbSituacao.Text;
             var dados = await EquipamentosRepositorio.ListarAsync(txtPesquisa.Text.Trim(), situacao);
             if (IsDisposed || versao != _versaoPesquisa) return;
-            tabela.DataSource = dados;
-            tabela.Columns["id"]!.Visible = false;
+            OperacaoTela.Mostrar(tabela, dados, "id");
         }
         catch (Exception ex) when (ex is MySqlConnector.MySqlException or IOException or InvalidOperationException or System.Text.Json.JsonException or KeyNotFoundException or ArgumentException)
         {
