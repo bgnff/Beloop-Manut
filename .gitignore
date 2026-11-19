@@ -1,0 +1,12 @@
+# Arquivos gerados pelo Visual Studio e pelo .NET
+.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+
+# Conexão local: contém credenciais do banco
+**/conexao.local.json
+
+# Arquivo local antigo de conexão, pode conter credenciais
+Beloop-Manut/Beloop-Manut/ConexaoDB/ConexaoMySql.cs
