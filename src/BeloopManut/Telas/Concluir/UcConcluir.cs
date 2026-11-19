@@ -8,7 +8,7 @@ public partial class UcConcluir : UserControl, ITela
 {
     public event Action<string>? Navegar;
     public UcConcluir() : this(0) { }
-    public UcConcluir(uint id) { 
+    public UcConcluir(uint id) {
         InitializeComponent();
         lblSecao.Text = "";
         btnSalvar.Enabled = false;

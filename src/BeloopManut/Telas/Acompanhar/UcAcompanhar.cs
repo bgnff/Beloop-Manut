@@ -8,7 +8,7 @@ public partial class UcAcompanhar : UserControl, ITela
 {
     public event Action<string>? Navegar;
     public UcAcompanhar() : this(0) { }
-    public UcAcompanhar(uint id) { 
+    public UcAcompanhar(uint id) {
         InitializeComponent();
         lblDados.Text = "";
         btnProsseguir.Enabled = false;

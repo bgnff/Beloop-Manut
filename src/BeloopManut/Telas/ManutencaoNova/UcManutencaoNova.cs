@@ -8,7 +8,7 @@ public partial class UcManutencaoNova : UserControl, ITela
 {
     public event Action<string>? Navegar;
     public UcManutencaoNova() : this(null) { }
-    public UcManutencaoNova(uint? equipamentoId) { 
+    public UcManutencaoNova(uint? equipamentoId) {
         InitializeComponent();
         btnAcao.Click += (_, _) => Navegar?.Invoke("manutencoes");
         campo0.Items.Clear();
