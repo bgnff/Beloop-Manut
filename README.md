@@ -23,9 +23,11 @@ A primeira versão é destinada à equipe da oficina interna, será utilizada no
 
 ## Como abrir
 
-Abra `Beloop-Manut/Beloop-Manut.slnx` no Visual Studio com a carga de trabalho **Desenvolvimento para desktop com .NET** e o SDK .NET 8. Para preparar o banco e o login, consulte `BancoDeDados/04_instrucoes_login.md`.
+Abra `Beloop-Manut.slnx` no Visual Studio com a carga de trabalho **Desenvolvimento para desktop com .NET** e o SDK .NET 8. Para preparar o banco e o login, consulte `BancoDeDados/04_instrucoes_login.md`.
 
 ## Estrutura
+
+- `src/BeloopManut`: projeto Windows Forms.
 
 - `Telas/Login` e `Telas/Principal`: formulário de entrada e navegação.
 - `Telas/VisaoGeral`, `Equipamentos`, `EquipamentoNovo`, `EquipamentoDetalhes`, `Manutencoes`, `ManutencaoNova`, `Acompanhar`, `Concluir`, `Historico` e `Relatorios`: controles de usuário e arquivos Designer.
