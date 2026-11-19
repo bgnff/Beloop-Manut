@@ -120,7 +120,7 @@ partial class UcRelatorios
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(241,243,247);
         AutoScroll = true;
-        AutoScrollMinSize = new Size(1165, 810);
+        AutoScrollMinSize = new Size(1165, 740);
         Name = "UcRelatorios";
         Size = new Size(1165, 810);
         ResumeLayout(false);

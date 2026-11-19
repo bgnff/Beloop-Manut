@@ -7,7 +7,7 @@ namespace Beloop_Manut.Telas.Manutencoes;
 public partial class UcManutencoes : UserControl, ITela
 {
     public event Action<string>? Navegar;
-    public UcManutencoes() { 
+    public UcManutencoes() {
         InitializeComponent();
         btnAcao.Click += (_, _) => Navegar?.Invoke("manutencao_nova");
         btnDetalhes.Click += (_, _) => Abrir();
