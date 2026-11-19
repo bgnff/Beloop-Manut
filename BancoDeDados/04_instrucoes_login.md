@@ -21,3 +21,7 @@
 5. Execute o projeto. Para a conta criada pelo schema: usuário `admin` e senha `Beloop@123`.
 
 Se `admin` já existir, o script não troca sua senha; ele preserva o usuário existente. O script também não recria tabelas existentes: se foram criadas com estrutura diferente, será necessária uma migração. A conta com senha conhecida destina-se apenas a desenvolvimento. As demais telas ainda não estão conectadas aos dados do banco.
+
+## Dados de teste
+
+Depois de executar `04_schema_completo.sql` em um banco de desenvolvimento, execute `05_dados_teste.sql` para adicionar exemplos de equipamentos e manutenções. O script usa códigos `TESTE-EQ-*`, não limpa dados existentes e evita repetir os exemplos ao ser executado novamente. Use apenas em ambiente de desenvolvimento e revise os registros antes de executar.
