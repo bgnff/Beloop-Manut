@@ -27,15 +27,17 @@ public partial class FrmPrincipal : Form
 
     private void AbrirTela(string destino)
     {
-        UserControl tela = destino switch
+        var partes = destino.Split(':', 2);
+        uint id = partes.Length == 2 && uint.TryParse(partes[1], out uint valor) ? valor : 0;
+        UserControl tela = partes[0] switch
         {
             "equipamentos" => new Equipamentos.UcEquipamentos(),
             "equipamento_novo" => new EquipamentoNovo.UcEquipamentoNovo(),
             "equipamento_detalhes" => new EquipamentoDetalhes.UcEquipamentoDetalhes(),
             "manutencoes" => new Manutencoes.UcManutencoes(),
-            "manutencao_nova" => new ManutencaoNova.UcManutencaoNova(),
-            "acompanhar" => new Acompanhar.UcAcompanhar(),
-            "concluir" => new Concluir.UcConcluir(),
+            "manutencao_nova" => new ManutencaoNova.UcManutencaoNova(id == 0 ? null : id),
+            "acompanhar" => new Acompanhar.UcAcompanhar(id),
+            "concluir" => new Concluir.UcConcluir(id),
             "historico" => new Historico.UcHistorico(),
             "relatorios" => new Relatorios.UcRelatorios(),
             _ => new VisaoGeral.UcVisaoGeral()
