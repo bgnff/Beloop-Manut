@@ -17,7 +17,7 @@
    SELECT id, nome, login, ativo FROM usuarios;
    ```
 
-4. Abra `conexao.local.json` na pasta do projeto `Beloop-Manut/Beloop-Manut` e revise os dados do MySQL (servidor, porta, usuário e senha). Esse arquivo já existe neste computador e não precisa ser substituído. Ao compilar, o Visual Studio o copia automaticamente para a pasta de execução. Ele é ignorado pelo Git.
+4. Abra `conexao.local.json` na pasta do projeto `src/BeloopManut` e revise os dados do MySQL (servidor, porta, usuário e senha). Esse arquivo já existe neste computador e não precisa ser substituído. Ao compilar, o Visual Studio o copia automaticamente para a pasta de execução. Ele é ignorado pelo Git.
 5. Execute o projeto. Para a conta criada pelo schema: usuário `admin` e senha `Beloop@123`.
 
 Se `admin` já existir, o script não troca sua senha; ele preserva o usuário existente. O script também não recria tabelas existentes: se foram criadas com estrutura diferente, será necessária uma migração. A conta com senha conhecida destina-se apenas a desenvolvimento. As demais telas ainda não estão conectadas aos dados do banco.

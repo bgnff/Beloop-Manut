@@ -9,4 +9,4 @@
 **/conexao.local.json
 
 # Arquivo local antigo de conexão, pode conter credenciais
-Beloop-Manut/Beloop-Manut/ConexaoDB/ConexaoMySql.cs
+**/ConexaoDB/ConexaoMySql.cs
